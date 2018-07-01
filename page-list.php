@@ -5,11 +5,14 @@
 
 get_header('admin');
 $post_type = $_SERVER[REQUEST_URI];
+$post_type = explode("/", $post_type);
+
 ?>
+
 <div class="col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1 class="panel-title">Posts</h1>
+            <h1 class="panel-title">Cadastros </h1>
         </div>
         <div class="panel-body">
             <hr>
@@ -22,23 +25,28 @@ $post_type = $_SERVER[REQUEST_URI];
                 </tr>
                 </thead>
                 <tbody>
-                <?php $args = array(
+                <?php 
+                  $args = array(
                     'numberposts'	=> -1,
-                    'post_type'		=> basename($post_type),
-                );
-                $query = new WP_Query( $args );
-                if( $query->have_posts() ):
-                    while( $query->have_posts() ) : $query->the_post();
-                        $postid = get_the_ID(); ?>
+                    'post_type'		=> basename($post_type[2]),
+                  );
+                  $query = new WP_Query( $args );
+                  if( $query->have_posts() ):
+                      while( $query->have_posts() ) : $query->the_post();
+                          $postid = get_the_ID(); 
+                ?>
                         <tr>
                             <td width="50px"><strong><?php echo $postid; ?></strong></td>
                             <td class="text-left"><?php echo the_title(); ?></td>
                             <td width="35%" class="text-right">
-                                <a class="btn btn-default btn-sm" href="https://www.raphael.website/api/admin/edit/?id=<?php echo $postid; ?>">
-                                    Edit
+                                <a class="btn btn-default btn-sm" href="<?php get_post_permalink( $postid ); ?>" target="_blank">
+                                    Visualizar
+                                </a>
+                                <a class="btn btn-default btn-sm" href="<?php echo $base_uri; ?>/admin/editar/?id=<?php echo $postid; ?>">
+                                    Editar
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="<?php echo get_delete_post_link( $postid ); ?>" onclick="return confirm('Would you really like to delete this entry?');">
-                                    Delete
+                                    Deletar
                                 </a>
                             </td>
                         </tr>

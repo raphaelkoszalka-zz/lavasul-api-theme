@@ -1,13 +1,15 @@
 <?php
 /**
- * TEMPLATE NAME: Edição
+ * TEMPLATE NAME: EDIT
  */
 acf_form_head();
-get_header('admin'); ?>
+get_header('admin'); 
+?>
 
 <div class="col-md-12">
     <div class="panel panel-primary">
-        <div class="panel-heading">Edit</h1>
+        <div class="panel-heading">
+          <h1>Edit</h1>
         </div>
         <div class="pane-body">
             <?php
@@ -17,7 +19,6 @@ get_header('admin'); ?>
                 'submit_value' => 'SAVE'
             );
             acf_form($args);
-
             ?>
         </div>
     </div>

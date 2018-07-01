@@ -14,7 +14,7 @@ if ($user_ID == '') {
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<title><?php echo $theme_name; ?></title>
+	<title>Painel de Administração Website Lavasul</title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
